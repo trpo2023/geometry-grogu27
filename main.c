@@ -22,7 +22,7 @@ int isEnd(char *str)
 {
 	int res = 1;
 	int index = 0;
-	int endSymbol = strlen(str) - 1;
+	int endSymbol = strlen(str) - 2;
 	for (int i = 0; i < strlen(str); i++)
 	{
 		if (str[i] == ')')
@@ -31,10 +31,10 @@ int isEnd(char *str)
 			break;
 		}
 	}
-	if (index == endSymbol)
+	if (index  == endSymbol)
 	{
 		res = 0;
-		return res;
+		
 	}	
 	return res;
 }
@@ -51,14 +51,10 @@ int isObject(char *str)
 			break;
 	}
 	char figure[] = "circle";
-	// int i = 0;
-    // while (str[i] != '\0') {
-    //     str[i] = tolower(str[i]);
-    //     i += 1;
-    // }
+	
 	for (int i = 0; i < strlen(rec); i++)
 	{
-		tolower(rec[i]);
+		rec[i] = tolower(rec[i]);
 	}
 	
 	if (strcmp(rec, figure) == 0)
