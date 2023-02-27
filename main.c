@@ -48,7 +48,10 @@ int isObject(char *str)
 			break;
 	}
 	char figure[] = "circle";
-	
+	for (int i = 0; i < strlen(rec); i++)
+	{
+		tolower(rec[i]);
+	}
 	
 	if (strcmp(rec, figure) == 0)
 	{
