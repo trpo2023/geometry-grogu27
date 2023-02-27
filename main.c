@@ -4,41 +4,44 @@
 #include <ctype.h>
 int isArguments(char *str)
 {
-	int ret = 1;
+	int res = 1;
 	for (int i = 7; str[i] != ')'; i++)
 	{
 		if ((str[i] >= 48 && str[i] <= 57) || str[i] == '.' || str[i] == ',' || str[i] == ' ')
-			ret = 0;
+			res = 0;
 		else
 		{
-			ret = 1;
+			res = 1;
 			break;
 		}
 	}
-	return ret;
+	return res;
 }
 
 int isEnd(char *str)
 {
-	int ret = 1;
-	int firstBracket = 0;
-	int endingSymbol = strlen(str) - 1;
+	int res = 1;
+	int index = 0;
+	int endSymbol = strlen(str) - 1;
 	for (int i = 0; i < strlen(str); i++)
 	{
 		if (str[i] == ')')
 		{
-			firstBracket = i;
+			index = i;
 			break;
 		}
 	}
-	if (firstBracket == endingSymbol)
-		ret = 0;
-	return ret;
+	if (index == endSymbol)
+	{
+		res = 0;
+		return res;
+	}	
+	return res;
 }
 
 int isObject(char *str)
 {
-	int ret = 1;
+	int res = 1;
 	char rec[100];
 	for (int i = 0; i < strlen(str); i++)
 	{
@@ -48,6 +51,11 @@ int isObject(char *str)
 			break;
 	}
 	char figure[] = "circle";
+	// int i = 0;
+    // while (str[i] != '\0') {
+    //     str[i] = tolower(str[i]);
+    //     i += 1;
+    // }
 	for (int i = 0; i < strlen(rec); i++)
 	{
 		tolower(rec[i]);
@@ -55,9 +63,9 @@ int isObject(char *str)
 	
 	if (strcmp(rec, figure) == 0)
 	{
-		ret = 0;
+		res = 0;
 	}
-	return ret;
+	return res;
 }
 
 int main(int argc, char **argv)
