@@ -8,5 +8,6 @@ int main(int argc, char** argv)
 	FILE *file = fopen("data.txt", "r");
 	while (fscanf(file, "%d", &a) != EOF)
 		printf("%d\n", a);
+	fclose(file);
 	return 0;
 }
