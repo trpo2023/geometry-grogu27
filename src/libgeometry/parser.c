@@ -38,7 +38,7 @@ void isEnd(char *str)
 	int index;
 	int target;
 	int endSymbol = strlen(str) - 2;
-	for (int i = 0; i < strlen(str); i++)
+	for (size_t i = 0; i < strlen(str); i++)
 	{
 		if (str[i] == ')')
 		{
@@ -62,7 +62,7 @@ void isObject(char *str)
 	int res = 0;
 	char rec[100];
 	int target;
-	for (int i = 0; i < strlen(str); i++)
+	for (size_t i = 0; i < strlen(str); i++)
 	{
 		if (str[i] != '(')
 			rec[i] = str[i];
@@ -71,7 +71,7 @@ void isObject(char *str)
 	}
 	char figure[] = "circle";
 	
-	for (int i = 0; i < strlen(rec); i++)
+	for (size_t i = 0; i < strlen(rec); i++)
 	{
 		rec[i] = tolower(rec[i]);
 	}
