@@ -2,6 +2,7 @@
 #include <locale.h>
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 void error_isObject(int index);
 void error_isArguments(int index);
