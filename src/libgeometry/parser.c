@@ -12,7 +12,45 @@ void error_isEnd(int index)
 {
 	printf("Ошибка на элементе %d: Неправильный завершающий символ\n", index);
 }
-void isArguments(char *str)
+
+
+// void calculate_circle(Circle circle)
+// {
+// 	circle.r = 5;
+//     circle->perimetr = 2 * 3.14 * circle.r;
+//     circle->area = 3.14 * circle.r * circle.r;
+// }
+
+
+double calculate_area_circle(char *str)
+{
+	int radius;
+	double area;
+	for (int i = strlen(str); str[i] != '('; i--)
+		if (str[i] >= 48 && str[i] <= 57)
+		{
+			radius = atoi(&str[i]);
+			area = 3.14 * (radius * radius);
+			break;
+		}
+	return area;
+}
+double calculate_perimetr_circle(char *str)
+{
+	int radius;
+	double perimetr;
+	for (int i = strlen(str); str[i] != '('; i--)
+		if (str[i] >= 48 && str[i] <= 57)
+		{
+			radius = atoi(&str[i]);
+			perimetr = 2 * 3.14 * radius;
+			break;
+		}
+	return perimetr;
+	
+
+}
+int check_argument(char *str)
 {
 	int res = 1;
 	int target;
@@ -28,11 +66,16 @@ void isArguments(char *str)
 		}
 	}
 	if (res)
+	{
 		error_isArguments(target);
+		return 0;
+	}
+	else
+		return 1;
 	
 }
 
-void isEnd(char *str)
+void check_end(char *str)
 {
 	int res = 1;
 	int index;
@@ -57,7 +100,7 @@ void isEnd(char *str)
 	
 }
 
-void isObject(char *str)
+void check_name_Object(char *str)
 {
 	int res = 0;
 	char rec[100];
