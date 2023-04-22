@@ -4,9 +4,6 @@
 #include <string.h>
 #include <stdlib.h>
 
-typedef struct Circle {
-    double x, y, r, perimetr, area;
-} Circle;
 double calculate_perimetr_circle(char *str);
 double calculate_area_circle(char *str);
 int area_calculation(char *str);
