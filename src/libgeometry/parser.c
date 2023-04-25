@@ -12,22 +12,17 @@ void error_isObject(int index)
     printf("Ошибка на элементе %d: Неправильный ввод названия объекта\n",
            index);
 }
+
 void error_isArguments(int index)
 {
     printf("Ошибка на элементе %d: Неправильно введены данные объекта\n",
            index);
 }
+
 void error_isEnd(int index)
 {
     printf("Ошибка на элементе %d: Неправильный завершающий символ\n", index);
 }
-
-// void calculate_circle(Circle circle)
-// {
-// 	circle.r = 5;
-//     circle->perimetr = 2 * 3.14 * circle.r;
-//     circle->area = 3.14 * circle.r * circle.r;
-// }
 
 double calculate_area_circle(char* str)
 {
@@ -41,6 +36,7 @@ double calculate_area_circle(char* str)
         }
     return area;
 }
+
 double calculate_perimetr_circle(char* str)
 {
     int radius;
@@ -53,6 +49,7 @@ double calculate_perimetr_circle(char* str)
         }
     return perimetr;
 }
+
 int check_argument(char* str)
 {
     int res = 1;
