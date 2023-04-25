@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 #include <libgeometry/parser.h>
 
 int main()
