@@ -8,7 +8,7 @@ int main()
     FILE* file;
     file = fopen("../input/data.txt", "r");
     if (!file)
-		return 0;
+        return 0;
     char str[100];
     fgets(str, 99, file);
     printf("%s\n", str);
