@@ -57,9 +57,9 @@ int check_argument(char* str)
     for (int i = 7; str[i] != ')'; i++) {
         if ((str[i] >= 48 && str[i] <= 57) || str[i] == '.' || str[i] == ','
             || str[i] == ' ')
-            res = 0;
-        else {
             res = 1;
+        else {
+            res = 0;
             target = i;
             break;
         }
@@ -71,7 +71,7 @@ int check_argument(char* str)
         return 1;
 }
 
-void check_end(char* str)
+int check_end(char* str)
 {
     int res = 1;
     int index;
@@ -87,13 +87,16 @@ void check_end(char* str)
         res = 0;
     }
     target = endSymbol;
-    if (res)
+    if (res) {
         error_isEnd(target);
+        return 0;
+    } else
+        return 1;
 }
 
-void check_name_Object(char* str)
+int check_name_Object(char* str)
 {
-    int res = 0;
+    int res = 1;
     char rec[100];
     int target;
     for (size_t i = 0; i < strlen(str); i++) {
@@ -113,10 +116,13 @@ void check_name_Object(char* str)
         for (int i = 0; str[i] != '('; i++) {
             if (rec[i] != figure[i]) {
                 target = i;
-                res = 1;
+                res = 0;
             }
         }
 
-    if (res)
+    if (res) {
         error_isObject(target);
+        return 0;
+    } else
+        return 1;
 }

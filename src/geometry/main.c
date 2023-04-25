@@ -12,10 +12,10 @@ int main()
     char str[100];
     fgets(str, 99, file);
     printf("%s\n", str);
-    check_name_Object(str);
-    check_end(str);
-    int flag = check_argument(str);
-    if (flag) {
+    int flag = check_name_Object(str);
+    int flag2 = check_end(str);
+    int flag3 = check_argument(str);
+    if (flag && flag2 && flag3) {
         double perimetr = calculate_perimetr_circle(str);
         double area = calculate_area_circle(str);
         printf("Perimetr = %lf\nArea = %lf\n", perimetr, area);

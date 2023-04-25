@@ -12,5 +12,5 @@ void error_isObject(int index);
 void error_isArguments(int index);
 void error_isEnd(int index);
 int check_argument(char* str);
-void check_end(char* str);
-void check_name_Object(char* str);
+int check_end(char* str);
+int check_name_Object(char* str);
