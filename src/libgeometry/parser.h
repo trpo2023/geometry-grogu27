@@ -1,4 +1,10 @@
 #pragma once
+
+#include <ctype.h>
+#include <locale.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 double calculate_perimetr_circle(char* str);
 double calculate_area_circle(char* str);
 int area_calculation(char* str);
