@@ -24,47 +24,54 @@ void error_isEnd(int index)
     printf("Ошибка на элементе %d: Неправильный завершающий символ\n", index);
 }
 
-double calculate_area_circle(char* str)
+double get_radius(char *str)
 {
     int radius;
-    double area;
+
     for (int i = strlen(str); str[i] != '('; i--)
-        if (str[i] >= 48 && str[i] <= 57) {
+        if (str[i] >= 48 && str[i] <= 57)
+        {
             radius = atoi(&str[i]);
-            area = 3.14 * (radius * radius);
+            
             break;
         }
+    return radius;
+}           
+double calculate_area_circle(double radius)
+{
+    double area = 3.14 * (radius * radius);
     return area;
 }
 
-double calculate_perimetr_circle(char* str)
+double calculate_perimetr_circle(double radius)
 {
-    int radius;
-    double perimetr;
-    for (int i = strlen(str); str[i] != '('; i--)
-        if (str[i] >= 48 && str[i] <= 57) {
-            radius = atoi(&str[i]);
-            perimetr = 2 * 3.14 * radius;
-            break;
-        }
+   
+    double perimetr = 2 * 3.14 * radius;
     return perimetr;
 }
 
 int check_argument(char* str)
 {
-    int res = 1;
+    int error = 0;
     int target;
-    for (int i = 7; str[i] != ')'; i++) {
+    size_t index;
+    for (size_t i = 0; i < strlen(str); i++) 
+        if (str[i] == '(')
+        {
+            index = i;
+            break;
+        }
+    for (size_t i = index + 1; str[i] != ')'; i++) {
         if ((str[i] >= 48 && str[i] <= 57) || str[i] == '.' || str[i] == ','
             || str[i] == ' ')
-            res = 1;
+            error = 0;
         else {
-            res = 0;
+            error = 1;
             target = i;
             break;
         }
     }
-    if (res) {
+    if (error) {
         error_isArguments(target);
         return 0;
     } else
@@ -73,7 +80,7 @@ int check_argument(char* str)
 
 int check_end(char* str)
 {
-    int res = 1;
+    int error = 0;
     int index;
     int target;
     int endSymbol = strlen(str) - 2;
@@ -83,11 +90,11 @@ int check_end(char* str)
             break;
         }
     }
-    if (index == endSymbol) {
-        res = 0;
-    }
+    if (index != endSymbol) 
+        error = 1;
+    
     target = endSymbol;
-    if (res) {
+    if (error) {
         error_isEnd(target);
         return 0;
     } else
@@ -96,7 +103,7 @@ int check_end(char* str)
 
 int check_name_Object(char* str)
 {
-    int res = 1;
+    int error = 0;
     char rec[100];
     int target;
     for (size_t i = 0; i < strlen(str); i++) {
@@ -110,17 +117,16 @@ int check_name_Object(char* str)
     for (size_t i = 0; i < strlen(rec); i++) {
         rec[i] = tolower(rec[i]);
     }
-
-    if (strcmp(rec, figure))
-
-        for (int i = 0; str[i] != '('; i++) {
-            if (rec[i] != figure[i]) {
+ 
+    if ((strcmp(figure, rec) != 0))
+        for (size_t i = 0; str[i] != '('; i++) 
+            if (figure[i] != rec[i]) {
                 target = i;
-                res = 0;
+                error = 1;
+                break;
             }
-        }
-
-    if (res) {
+        
+    if (error) {
         error_isObject(target);
         return 0;
     } else

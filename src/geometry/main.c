@@ -16,9 +16,11 @@ int main()
     int flag2 = check_end(str);
     int flag3 = check_argument(str);
     if (flag && flag2 && flag3) {
-        double perimetr = calculate_perimetr_circle(str);
-        double area = calculate_area_circle(str);
+        double radius = get_radius(str);
+        double perimetr = calculate_perimetr_circle(radius);
+        double area = calculate_area_circle(radius);
         printf("Perimetr = %lf\nArea = %lf\n", perimetr, area);
+        
     }
     fclose(file);
     return 0;
