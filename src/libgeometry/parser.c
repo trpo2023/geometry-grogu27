@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+#define PI	3.14159265358979323846
 #include <libgeometry/parser.h>
 
 void error_isObject(int index)
@@ -38,13 +38,13 @@ double get_radius(char* str)
 }
 double calculate_area_circle(double radius)
 {
-    double area = 3.14 * (radius * radius);
+    double area = PI * (radius * radius);
     return area;
 }
 
 double calculate_perimetr_circle(double radius)
 {
-    double perimetr = 2 * 3.14 * radius;
+    double perimetr = 2 * PI * radius;
     return perimetr;
 }
 
