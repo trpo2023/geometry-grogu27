@@ -1,1 +1,2 @@
-circl(2 2, 5)
+circle(5 2, 5)
+circle(6 3, 7)

@@ -1,4 +1,3 @@
-
 #include <ctype.h>
 #include <locale.h>
 #include <stdio.h>
@@ -6,6 +5,7 @@
 #include <string.h>
 
 #include <libgeometry/parser.h>
+#define PI	3.14159265358979323846
 
 void error_isObject(int index)
 {
@@ -24,27 +24,74 @@ void error_isEnd(int index)
     printf("Ошибка на элементе %d: Неправильный завершающий символ\n", index);
 }
 
-double get_radius(char* str)
+int intersects_circles(char *first_circle, char *second_circle)
+{
+    
+}
+
+int get_y_coordinate(char *str)
+{
+    int x_coordinate;
+    int y_coordinate;
+    size_t index;
+    for (size_t i = 0; i < strlen(str); i++)
+        if (str[i] == '(') {
+            index = i;
+            break;
+        }
+    for (size_t i = index + 1; str[i] != ')'; i++){
+        if (str[i] >= 48 && str[i] <= 57) 
+        {
+            x_coordinate = i;
+            break;
+        }
+    }
+    for (size_t i = x_coordinate + 1; str[i] != ')'; i++)
+    {
+        if (str[i] >= 48 && str[i] <= 57) 
+        {
+            y_coordinate = i;
+            break;
+        }
+    }
+    return y_coordinate;   
+}
+int get_x_coordinate(char *str)
+{
+    int x_coordinate;
+    size_t index;
+    for (size_t i = 0; i < strlen(str); i++)
+        if (str[i] == '(') {
+            index = i;
+            break;
+        }
+    for (size_t i = index + 1; str[i] != ')'; i++) 
+        if (str[i] >= 48 && str[i] <= 57) 
+        {
+            x_coordinate = i;
+            break;
+        }
+    return x_coordinate;  
+}
+int get_radius(char* str)
 {
     int radius;
-
     for (int i = strlen(str); str[i] != '('; i--)
         if (str[i] >= 48 && str[i] <= 57) {
             radius = atoi(&str[i]);
-
             break;
         }
     return radius;
 }
 double calculate_area_circle(double radius)
 {
-    double area = 3.14 * (radius * radius);
+    double area = PI * (radius * radius);
     return area;
 }
 
 double calculate_perimetr_circle(double radius)
 {
-    double perimetr = 2 * 3.14 * radius;
+    double perimetr = 2 * PI * radius;
     return perimetr;
 }
 
