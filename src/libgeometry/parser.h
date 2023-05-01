@@ -18,4 +18,4 @@ int check_name_Object(char* str);
 int get_radius(char* str);
 int get_x_coordinate(char *str);
 int get_y_coordinate(char *str);
-int intersects_circles(char *first_circle, char *second_circle);
+int intersects_circles(int *first_circle, int *second_circle);

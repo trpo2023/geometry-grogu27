@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+#include <math.h>
 #include <libgeometry/parser.h>
 #define PI	3.14159265358979323846
 
@@ -24,9 +24,15 @@ void error_isEnd(int index)
     printf("Ошибка на элементе %d: Неправильный завершающий символ\n", index);
 }
 
-int intersects_circles(char *first_circle, char *second_circle)
+int intersects_circles(int *first_circle, int *second_circle)
 {
-    
+    double distance = sqrt(pow(first_circle[0] - second_circle[0], 2) + pow(first_circle[1] - second_circle[1], 2));
+    double sum_radius = first_circle[2] + second_circle[2];
+    printf("d = %lf s = %lf\n", distance, sum_radius);
+    if (distance <= sum_radius)
+        return 1;
+    else
+        return 0;
 }
 
 int get_y_coordinate(char *str)

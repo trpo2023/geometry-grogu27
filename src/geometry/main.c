@@ -45,15 +45,17 @@ int main()
                 second_circle[2] = radius;
             }
             }
-            int flag = intersects_circles(first_circle, second_circle);
+            int check = intersects_circles(first_circle, second_circle);
             count++;
-            // if(intersects_circles())
-            //     printf("Окружности пересекаются\n");
+            if(check)
+                printf("Окружности пересекаются\n");
+            else
+                printf("Окружности не пересекаются\n");
     }
 
 
-    printf("x = %d y = %d rad = %d\n", first_circle[0], first_circle[1], first_circle[2]);
-    printf("x = %d y = %d rad = %d\n", second_circle[0], second_circle[1], second_circle[2]);
+    // printf("x = %d y = %d rad = %d\n", first_circle[0], first_circle[1], first_circle[2]);
+    // printf("x = %d y = %d rad = %d\n", second_circle[0], second_circle[1], second_circle[2]);
 
     fclose(file);
     return 0;
