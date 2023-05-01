@@ -20,8 +20,7 @@ int main()
         double perimetr = calculate_perimetr_circle(radius);
         double area = calculate_area_circle(radius);
         printf("Perimetr = %lf\nArea = %lf\n", perimetr, area);
-        
-    }
+        }
     fclose(file);
     return 0;
 }

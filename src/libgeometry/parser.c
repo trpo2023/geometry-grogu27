@@ -24,19 +24,18 @@ void error_isEnd(int index)
     printf("Ошибка на элементе %d: Неправильный завершающий символ\n", index);
 }
 
-double get_radius(char *str)
+double get_radius(char* str)
 {
     int radius;
 
     for (int i = strlen(str); str[i] != '('; i--)
-        if (str[i] >= 48 && str[i] <= 57)
-        {
+        if (str[i] >= 48 && str[i] <= 57) {
             radius = atoi(&str[i]);
-            
+
             break;
         }
     return radius;
-}           
+}
 double calculate_area_circle(double radius)
 {
     double area = 3.14 * (radius * radius);
@@ -45,7 +44,6 @@ double calculate_area_circle(double radius)
 
 double calculate_perimetr_circle(double radius)
 {
-   
     double perimetr = 2 * 3.14 * radius;
     return perimetr;
 }
@@ -55,9 +53,8 @@ int check_argument(char* str)
     int error = 0;
     int target;
     size_t index;
-    for (size_t i = 0; i < strlen(str); i++) 
-        if (str[i] == '(')
-        {
+    for (size_t i = 0; i < strlen(str); i++)
+        if (str[i] == '(') {
             index = i;
             break;
         }
@@ -90,9 +87,9 @@ int check_end(char* str)
             break;
         }
     }
-    if (index != endSymbol) 
+    if (index != endSymbol)
         error = 1;
-    
+
     target = endSymbol;
     if (error) {
         error_isEnd(target);
@@ -117,15 +114,15 @@ int check_name_Object(char* str)
     for (size_t i = 0; i < strlen(rec); i++) {
         rec[i] = tolower(rec[i]);
     }
- 
+
     if ((strcmp(figure, rec) != 0))
-        for (size_t i = 0; str[i] != '('; i++) 
+        for (size_t i = 0; str[i] != '('; i++)
             if (figure[i] != rec[i]) {
                 target = i;
                 error = 1;
                 break;
             }
-        
+
     if (error) {
         error_isObject(target);
         return 0;
