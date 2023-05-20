@@ -1,11 +1,11 @@
 #include <ctype.h>
+#include <libgeometry/parser.h>
 #include <locale.h>
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <math.h>
-#include <libgeometry/parser.h>
-#define PI	3.14159265358979323846
+#define PI 3.14159265358979323846
 
 void error_isObject(int index)
 {
@@ -24,9 +24,11 @@ void error_isEnd(int index)
     printf("Ошибка на элементе %d: Неправильный завершающий символ\n", index);
 }
 
-int intersects_circles(int *first_circle, int *second_circle)
+int intersects_circles(int* first_circle, int* second_circle)
 {
-    double distance = sqrt(pow(first_circle[0] - second_circle[0], 2) + pow(first_circle[1] - second_circle[1], 2));
+    double distance
+            = sqrt(pow(first_circle[0] - second_circle[0], 2)
+                   + pow(first_circle[1] - second_circle[1], 2));
     double sum_radius = first_circle[2] + second_circle[2];
     printf("d = %lf s = %lf\n", distance, sum_radius);
     if (distance <= sum_radius)
@@ -35,7 +37,7 @@ int intersects_circles(int *first_circle, int *second_circle)
         return 0;
 }
 
-int get_y_coordinate(char *str)
+int get_y_coordinate(char* str)
 {
     int x_coordinate;
     int y_coordinate;
@@ -45,24 +47,21 @@ int get_y_coordinate(char *str)
             index = i;
             break;
         }
-    for (size_t i = index + 1; str[i] != ')'; i++){
-        if (str[i] >= 48 && str[i] <= 57) 
-        {
+    for (size_t i = index + 1; str[i] != ')'; i++) {
+        if (str[i] >= 48 && str[i] <= 57) {
             x_coordinate = i;
             break;
         }
     }
-    for (size_t i = x_coordinate + 1; str[i] != ')'; i++)
-    {
-        if (str[i] >= 48 && str[i] <= 57) 
-        {
+    for (size_t i = x_coordinate + 1; str[i] != ')'; i++) {
+        if (str[i] >= 48 && str[i] <= 57) {
             y_coordinate = i;
             break;
         }
     }
-    return y_coordinate;   
+    return y_coordinate;
 }
-int get_x_coordinate(char *str)
+int get_x_coordinate(char* str)
 {
     int x_coordinate;
     size_t index;
@@ -71,13 +70,12 @@ int get_x_coordinate(char *str)
             index = i;
             break;
         }
-    for (size_t i = index + 1; str[i] != ')'; i++) 
-        if (str[i] >= 48 && str[i] <= 57) 
-        {
+    for (size_t i = index + 1; str[i] != ')'; i++)
+        if (str[i] >= 48 && str[i] <= 57) {
             x_coordinate = i;
             break;
         }
-    return x_coordinate;  
+    return x_coordinate;
 }
 int get_radius(char* str)
 {
@@ -133,7 +131,7 @@ int check_end(char* str)
     int error = 0;
     int index;
     int target;
-    int endSymbol = strlen(str) - 2;
+    int endSymbol = strlen(str) - 1;
     for (size_t i = 0; i < strlen(str); i++) {
         if (str[i] == ')') {
             index = i;
